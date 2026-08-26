@@ -1,0 +1,45 @@
+# NOTE: This config works for MacOS only for the moment because it relies on homebrew paths
+
+
+# enables syntax highlighting for commands through a plugin
+# source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# enables vim mode through a plugin
+# source "$(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
+
+# required to move the cursor to eol when hitting up / down arrow key
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+# enables history search when pressing up / down arrow
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
+
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+bindkey "^[[3~" delete-char
+
+alias ls="ls -lH --color=auto"
+alias vim="nvim"
+alias aws-vault="unset AWS_VAULT && aws-vault --backend=keychain exec synra"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# backup in case upper instructions fail: remove if working properly
+# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+# Created by `pipx` on 2024-11-20 18:05:29
+export PATH="$PATH:/Users/corvin/.local/bin"
+
+if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
+      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
+    zle -N zle-keymap-select "";
+fi
+
+# enables the starship rs prompt - config located in ~/.config/starship.toml
+eval "$(starship init zsh)"
+

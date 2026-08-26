@@ -1,0 +1,4 @@
+# .zshenv stub that sets up the $ZDOTDIR to $HOME/.config/zsh.
+# The actual .zshenv will live under $HOME/.config/zsh/.zshenv
+export ZDOTDIR="${HOME}/.config/zsh"
+[[ -f "${ZDOTDIR}/.zshenv" ]] && source ${ZDOTDIR}/.zshenv
