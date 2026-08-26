@@ -1,19 +1,13 @@
-#!/bin/sh
-
 {{- if eq .osid "darwin" -}}
+#!/bin/sh
 
 if ! command -v brew &> /dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 brew bundle --file=/dev/stdin <<EOF
-brew "git"
-brew "neovim"
-brew "starship"
+{{ range .packages.brews -}}
+brew "{{.}}"
+{{ end -}}
 EOF
-
-{{ else if eq .osid "linux-debian" }}
-echo "DETECTED LINUX DEBIAN - installing using apt"
-{{ else }}
-echo "DETECTED $osid"
 {{ end -}}
