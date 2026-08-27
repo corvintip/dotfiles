@@ -1,5 +1,17 @@
-{{- if eq .osid "linux-debian" -}}
+{{ if eq .osid "linux-debian" }}
 #!/bin/sh
-apt update
-apt install -y {{ range .packages.apt }} {{.}}{{ end }}
+
+SUDO=$(command -v sudo)
+if [ -z "$SUDO" ]; then
+    echo "WARN: sudo missing" 
+fi
+
+$SUDO apt update
+
+{{ range $pkg, $pkgMeta := .packages.debian }}
+{{- if eq $pkgMeta.via "apt" -}}
+$SUDO apt install -y "{{$pkg}}"
 {{ end -}}
+{{ end -}}
+
+{{ end }}

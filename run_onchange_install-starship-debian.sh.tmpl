@@ -1,0 +1,11 @@
+#!/bin/bash
+
+{{ if and (eq .osid "linux-debian") (hasKey .packages.debian "starship") (eq .packages.debian.starship.via "script") -}}
+{{   if le (float64 .chezmoi.osRelease.versionId) 12.0 -}}
+if ! command -v starship &> /dev/null; then
+    curl -sS https://starship.rs/install.sh | sh -s -- --yes
+fi
+{{   else -}}
+sudo apt install -y starship
+{{   end -}}
+{{ end -}}

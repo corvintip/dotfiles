@@ -1,13 +1,23 @@
 packages:
-  brews:
-    - zsh
-    - starship
-    - neovim
-    - git
-    - jq
-  apt:
-    - zsh
-    - starship
-    - neovim
-    - git
-    - jq
+  debian:
+    neovim:
+      via: apt
+    git:
+      via: apt
+    jq:
+      via: apt
+    zsh:
+      via: apt
+    starship:
+      via: script
+  darwin:
+    zsh:
+      via: brew
+    starship:
+      via: brew
+    neovim:
+      via: brew
+    git:
+      via: brew
+    jq:
+      via: brew
