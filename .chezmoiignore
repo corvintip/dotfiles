@@ -1,0 +1,17 @@
+{{- if and (ne .chezmoi.os "darwin") (ne .chezmoi.os "linux") }}
+run_once_set-default-shell.sh.tmpl
+{{ end -}}
+
+{{- if ne .osid "darwin" }}
+run_onchange_before_install-packages-darwin.sh.tmpl
+{{ end -}}
+
+{{- if ne .osid "linux-debian" }}
+run_onchange_before_install-packages-debian.sh.tmpl
+run_onchange_install-starship-debian.sh.tmpl
+{{ end -}}
+
+{{- if and (eq .osid "linux-debian") (ne .packages.debian.starship.via "script") }}
+# starship installation should not happen via script: ignore it
+run_onchange_install-starship-debian.sh.tmpl
+{{ end -}}

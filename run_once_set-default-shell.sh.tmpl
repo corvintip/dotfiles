@@ -1,6 +1,5 @@
 #!/bin/bash
-{{ if ne .chezmoi.os "windows" -}}
+
 if [ "$SHELL" != "{{ lookPath "zsh" }}" ]; then
     chsh -s {{ lookPath "zsh" }}
 fi
-{{ end -}}

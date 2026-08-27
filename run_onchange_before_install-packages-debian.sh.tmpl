@@ -1,4 +1,3 @@
-{{ if eq .osid "linux-debian" }}
 #!/bin/sh
 
 SUDO=$(command -v sudo)
@@ -13,5 +12,3 @@ $SUDO apt update
 $SUDO apt install -y "{{$pkg}}"
 {{ end -}}
 {{ end -}}
-
-{{ end }}
