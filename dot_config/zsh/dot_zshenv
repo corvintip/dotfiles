@@ -1,6 +1,6 @@
 # xdg spec defines this as the directory where user config files are stored - nvim uses this
 export XDG_CONFIG_HOME="${HOME}/.config"
-export STARTSHIP_CONFIG="${XDG_CONFIG_HOME}/starship/starship.toml"
+export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/starship/starship.toml"
 
 export EDITOR="nvim"
 export PAGER="less -S"
