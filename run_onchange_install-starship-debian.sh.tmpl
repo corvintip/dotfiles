@@ -1,6 +1,6 @@
 #!/bin/bash
 
-{{ if le (float64 .chezmoi.osRelease.versionId) 12.0 -}}
+{{ if le (float64 .chezmoi.osRelease.versionID) 12.0 -}}
 if ! command -v starship &> /dev/null; then
     curl -sS https://starship.rs/install.sh | sh -s -- --yes
     exit $?
