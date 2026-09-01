@@ -1,0 +1,8 @@
+{{- $root := . -}}
+{{- range $pkg, $pkgMeta := .packages -}}
+{{- if and (hasKey $pkgMeta $root.osid) (has $root.targetPackageGroup $pkgMeta.groups) -}}
+{{- $pkgMetaForOs := (get $pkgMeta $root.osid) -}}
+- name: {{ get $pkgMetaForOs "name" }}
+  via: {{ get $pkgMetaForOs "via" }}
+{{ end -}}
+{{- end }}

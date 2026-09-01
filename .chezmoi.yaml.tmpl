@@ -3,6 +3,9 @@
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
+{{- $packageGroup := env "PACKAGE_GROUP" | default "base" -}}
+
 
 data:
     osid: {{ $osid | quote }}
+    targetPackageGroup: {{ $packageGroup | quote }}

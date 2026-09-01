@@ -8,9 +8,11 @@ $git_status\
 $cmd_duration\
 $line_break\
 $python\
+$container\
 $character"""
 
 [directory]
+format = '[\[ $path \]]($style)[$read_only]($read_only_style) '
 style = "blue"
 
 [character]
@@ -44,3 +46,13 @@ style = "yellow"
 [python]
 format = "[$virtualenv]($style) "
 style = "#606060"
+
+[username]
+format = "[$user]($style) @ "
+
+[hostname]
+format = "[$ssh_symbol$hostname]($style) "
+ssh_only = false
+disabled = false
+
+[container]

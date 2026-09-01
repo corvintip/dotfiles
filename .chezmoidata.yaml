@@ -1,23 +1,46 @@
 packages:
-  debian:
-    neovim:
+  git:
+    darwin:
+      via: brew
+      name: git
+    linux-debian:
       via: apt
-    git:
+      name: git
+    groups: [ "base", "node_development" ]
+  neovim:
+    darwin:
+      via: brew
+      name: neovim
+    linux-debian:
       via: apt
-    jq:
+      name: neovim
+    groups: [ "base", "node_development" ]
+  jq:
+    darwin:
+      via: brew
+      name: jq
+    linux-debian:
       via: apt
-    zsh:
+      name: jq
+    groups: [ "base", "node_development" ]
+  zsh:
+    darwin:
+      via: brew
+      name: zsh
+    linux-debian:
       via: apt
-    starship:
+      name: zsh
+    groups: [ "base", "node_development" ]
+  starship:
+    darwin:
+      via: brew
+      name: starship
+    linux-debian:
       via: script
-  darwin:
-    zsh:
-      via: brew
-    starship:
-      via: brew
-    neovim:
-      via: brew
-    git:
-      via: brew
-    jq:
-      via: brew
+    groups: [ "base", "node_development" ]
+  mise:
+    darwin:
+      via: script
+    linux-debian:
+      via: script
+    groups: [ "node_development" ]

@@ -7,8 +7,11 @@ fi
 
 $SUDO apt update
 
-{{ range $pkg, $pkgMeta := .packages.debian }}
-{{- if eq $pkgMeta.via "apt" -}}
-$SUDO apt install -y "{{$pkg}}"
+{{- $yaml := includeTemplate "filter-packages" . -}}
+{{- $packages := $yaml | fromYaml -}}
+
+{{ range $packages }}
+{{- if eq .via "apt" -}}
+$SUDO apt install -y "{{.name}}"
 {{ end -}}
 {{ end -}}

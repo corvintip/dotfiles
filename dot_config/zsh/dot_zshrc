@@ -21,7 +21,6 @@ bindkey "^[[3~" delete-char
 
 alias ls="ls -lH --color=auto"
 alias vim="nvim"
-alias aws-vault="unset AWS_VAULT && aws-vault --backend=keychain exec synra"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -42,4 +41,3 @@ fi
 
 # enables the starship rs prompt - config located in ~/.config/starship.toml
 eval "$(starship init zsh)"
-

@@ -4,10 +4,13 @@ if ! command -v brew &> /dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+{{- $yaml := includeTemplate "filter-packages" . -}}
+{{- $packages := $yaml | fromYaml -}}
+
 brew bundle --file=/dev/stdin <<EOF
-{{- range $pkg, $pkgMeta := .packages.darwin }}
-{{- if eq $pkgMeta.via "brew" }}
-brew "{{$pkg}}"
+{{- range $packages }}
+{{- if eq .via "brew" }}
+brew "{{.name}}"
 {{- end -}}
 {{- end }}
 EOF
