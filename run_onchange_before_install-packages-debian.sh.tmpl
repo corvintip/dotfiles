@@ -7,10 +7,10 @@ fi
 
 $SUDO apt update
 
-{{- $yaml := includeTemplate "filter-packages" . -}}
+{{ $yaml := includeTemplate "filter-packages" . -}}
 {{- $packages := $yaml | fromYaml -}}
 
-{{ range $packages }}
+{{- range $packages -}}
 {{- if eq .via "apt" -}}
 $SUDO apt install -y "{{.name}}"
 {{ end -}}
