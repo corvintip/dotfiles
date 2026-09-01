@@ -1,6 +1,3 @@
-# NOTE: This config works for MacOS only for the moment because it relies on homebrew paths
-
-
 # enables syntax highlighting for commands through a plugin
 # source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
@@ -22,13 +19,6 @@ bindkey "^[[3~" delete-char
 alias ls="ls -lH --color=auto"
 alias vim="nvim"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-# backup in case upper instructions fail: remove if working properly
-# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 # Created by `pipx` on 2024-11-20 18:05:29
