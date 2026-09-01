@@ -11,7 +11,7 @@ install-packages-debian.sh
 install-starship-debian.sh
 {{ end -}}
 
-{{- if and (eq .osid "linux-debian") (ne .packages.debian.starship.via "script") }}
-# starship installation should not happen via script: ignore it
+{{- if and (eq .osid "linux-debian") (ne .packages.starship.linux-debian.via "script") }}
+# starship installation should not happen via script so we ignore it
 install-starship-debian.sh
 {{ end -}}

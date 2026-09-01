@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 {{ if le (float64 .chezmoi.osRelease.versionID) 12.0 -}}
 if ! command -v starship &> /dev/null; then
