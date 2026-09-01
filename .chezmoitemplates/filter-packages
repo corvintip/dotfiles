@@ -2,7 +2,8 @@
 {{- range $pkg, $pkgMeta := .packages -}}
 {{- if and (hasKey $pkgMeta $root.osid) (has $root.targetPackageGroup $pkgMeta.groups) -}}
 {{- $pkgMetaForOs := (get $pkgMeta $root.osid) -}}
-- name: {{ get $pkgMetaForOs "name" }}
+{{- $pkgName := ((hasKey $pkgMetaForOs "name") | ternary (get $pkgMetaForOs "name" ) $pkg) -}}
+- name: {{$pkgName}}
   via: {{ get $pkgMetaForOs "via" }}
 {{ end -}}
 {{- end }}

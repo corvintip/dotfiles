@@ -1,8 +1,8 @@
 packages:
   git:
     darwin:
-      via: brew
-      name: git
+      via: brew 
+      name: git # can be used to overwrite the default pkg name used when installing via pkg managers
     linux-debian:
       via: apt
       name: git
@@ -10,33 +10,26 @@ packages:
   neovim:
     darwin:
       via: brew
-      name: neovim
     linux-debian:
       via: apt
-      name: neovim
     groups: [ "base", "node_development" ]
   jq:
     darwin:
       via: brew
-      name: jq
     linux-debian:
       via: apt
-      name: jq
     groups: [ "base", "node_development" ]
   zsh:
     darwin:
       via: brew
-      name: zsh
     linux-debian:
       via: apt
-      name: zsh
     groups: [ "base", "node_development" ]
   starship:
     darwin:
       via: brew
-      name: starship
     linux-debian:
-      via: script
+      via: script # an external "run_onchange" script handles this installation
     groups: [ "base", "node_development" ]
   mise:
     darwin:
