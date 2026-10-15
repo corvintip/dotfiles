@@ -17,8 +17,8 @@ bindkey "^[[F" end-of-line
 bindkey "^[[3~" delete-char
 
 alias ls="ls -lH --color=auto"
+alias grep="grep --color"
 alias vim="nvim"
-
 
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 # Created by `pipx` on 2024-11-20 18:05:29
