@@ -14,6 +14,13 @@ return {
         function() require("fzf-lua").files() end,
         desc = "[F]ind [F]ile"
       },
+      {
+        "<leader>fc",
+        function()
+          require("fzf-lua").files({ cwd = vim.env.CHEZMOI_SOURCE_DIR })
+        end,
+        desc = "[F]ind in [C]onfig root"
+      },
     },
     opts = {}
     ---@diagnostic enable: missing-fields

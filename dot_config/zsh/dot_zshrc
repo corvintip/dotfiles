@@ -31,3 +31,5 @@ fi
 
 # enables the starship rs prompt - config located in ~/.config/starship.toml
 eval "$(starship init zsh)"
+
+export CHEZMOI_SOURCE_DIR=$(chezmoi data | jq -r '.chezmoi.config.sourceDir')
