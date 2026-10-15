@@ -1,5 +1,5 @@
 #!/bin/bash
 
-if [ "$SHELL" != "{{ lookPath "zsh" }}" ]; then
+if [ "$SHELL" != "{{ lookPath "zsh" }}" -a "$(uname)" != "Darwin" ]; then
     chsh -s {{ lookPath "zsh" }}
 fi

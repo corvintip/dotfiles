@@ -1,6 +1,6 @@
 {{- $root := . -}}
 
-{{- if and (ne .chezmoi.os "darwin") (ne .chezmoi.os "linux") }}
+{{- if ne .chezmoi.os "linux" }}
 set-default-shell.sh
 {{ end -}}
 
