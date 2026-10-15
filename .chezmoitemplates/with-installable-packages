@@ -1,0 +1,9 @@
+{{- $root := . -}}
+{{- $installablePackages := dict -}}
+{{- range $pkg, $pkgMeta := $root.packages -}}
+{{- if and (hasKey $pkgMeta $root.osid) (has $root.targetPackageGroup $pkgMeta.groups) -}}
+{{- $pkgMetaForOs := (get $pkgMeta $root.osid) -}}
+{{- $_ := set $installablePackages $pkg (mergeOverwrite (dict "pkgName" $pkg) $pkgMetaForOs) -}}
+{{- end -}}
+{{- end -}}
+{{ $installablePackages | toYaml }}

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+{{ $installablePackages := includeTemplate "with-installable-packages" . | fromYaml -}}
+{{- $installVia := dig "neovim" "via" nil $installablePackages -}}
+
+{{- if ne $installVia "script" -}}
+echo "skipping ${0} script - neovim is installed via {{$installVia}} instead"
+exit 0
+{{ end }}
+
+ARCH="{{.chezmoi.arch}}"

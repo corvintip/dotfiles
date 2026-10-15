@@ -1,0 +1,7 @@
+{{- $yaml := includeTemplate "filter-packages" .chezmoidata -}}
+{{- $packages := $yaml | fromYaml -}}
+{{- $installVia := (dig .package .chezmoidata.osid "via" nil $packages) -}}
+
+{{- if ne $installVia "script" -}}
+{{.script}}
+{{- end }}

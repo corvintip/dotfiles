@@ -1,17 +1,29 @@
+{{- $root := . -}}
+
 {{- if and (ne .chezmoi.os "darwin") (ne .chezmoi.os "linux") }}
 set-default-shell.sh
 {{ end -}}
 
 {{- if ne .osid "darwin" }}
-install-packages-darwin.sh
+# ignore any darwin script
+*-darwin.sh
 {{ end -}}
 
-{{- if ne .osid "linux-debian" }}
-install-packages-debian.sh
-install-starship-debian.sh
+{{- if ne .osid "linux_debian" }}
+# ignore any debian script
+*-debian.sh
 {{ end -}}
 
-{{- if and (eq .osid "linux-debian") (ne (get .packages.starship "linux-debian").via "script") }}
-# starship installation should not happen via script so we ignore the script
-install-starship-debian.sh
+
+# ignore install scripts for packages that:
+# 1. are not configured to install via "script" for the target platform (chezmoidata.yaml)
+# 2. are not part of the installable packages
+{{ $installablePackages := includeTemplate "with-installable-packages" . | fromYaml -}}
+{{- range $pkg, $pkgMeta := .packages -}}
+{{- $installVia := dig $root.osid "via" nil $pkgMeta -}}
+{{ if or (ne $installVia "script") (not (hasKey $installablePackages $pkg)) -}}
+install-{{$pkg}}*
 {{ end -}}
+{{ end -}}
+
+

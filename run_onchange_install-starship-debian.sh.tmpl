@@ -1,5 +1,13 @@
 #!/bin/sh
 
+{{ $installablePackages := includeTemplate "with-installable-packages" . | fromYaml -}}
+{{- $installVia := dig "starship" "via" nil $installablePackages -}}
+
+{{- if ne $installVia "script" -}}
+echo "skipping ${0} script - starship is installed via {{$installVia}} instead"
+exit 0
+{{ end }}
+
 {{ if le (float64 .chezmoi.osRelease.versionID) 12.0 -}}
 if ! command -v starship &> /dev/null; then
     curl -sS https://starship.rs/install.sh | sh -s -- --yes

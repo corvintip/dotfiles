@@ -4,13 +4,12 @@ if ! command -v brew &> /dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-{{- $yaml := includeTemplate "filter-packages" . -}}
-{{- $packages := $yaml | fromYaml -}}
+{{ $installablePackages := includeTemplate "with-installable-packages" . | fromYaml -}}
 
 brew bundle --file=/dev/stdin <<EOF
-{{- range $packages }}
-{{- if eq .via "brew" }}
-brew "{{.name}}"
+{{- range $pkg, $pkgMeta := $installablePackages }}
+{{- if eq $pkgMeta.via "brew" }}
+brew "{{$pkgMeta.pkgName}}"
 {{- end -}}
 {{- end }}
 EOF

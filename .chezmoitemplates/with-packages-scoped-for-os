@@ -1,0 +1,9 @@
+{{- $root := . -}}
+{{- $packagesScopedForOs := dict -}}
+{{- range $pkg, $pkgMeta := $root.packages -}}
+{{- if hasKey $pkgMeta $root.osid -}}
+{{- $pkgMetaForOs := (get $pkgMeta $root.osid) -}}
+{{- $_ := set $packagesScopedForOs $pkg (mergeOverwrite (dict "pkgName" $pkg) $pkgMetaForOs) -}}
+{{- end -}}
+{{- end -}}
+{{ $packagesScopedForOs | toYaml }}
