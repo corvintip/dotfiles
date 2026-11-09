@@ -12,7 +12,14 @@ return {
       {
         "<leader>ff",
         function() require("fzf-lua").files() end,
-        desc = "[F]ind [F]ile"
+        desc = "[F]ind [F]ile in project directory"
+      },
+      {
+        "<leader>fg",
+        function()
+          require("fzf-lua").live_grep()
+        end,
+        desc = "[F]ind by [G]repping project directory"
       },
       {
         "<leader>fc",
