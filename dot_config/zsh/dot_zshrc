@@ -24,6 +24,11 @@ export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 # Created by `pipx` on 2024-11-20 18:05:29
 export PATH="$PATH:/Users/corvin/.local/bin"
 
+# nvm is installed via homebrew and the following is needed, or else any brew upgrade will overwrite the nvm installation
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
 if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
       "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
     zle -N zle-keymap-select "";
