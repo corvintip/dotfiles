@@ -17,6 +17,10 @@ packages:
     darwin:
       via: brew
     groups: [ "base", "node_development" ]
+  ripgrep:
+    darwin:
+      via: brew
+    groups: [ "base", "node_development" ]
   jq:
     darwin:
       via: brew
