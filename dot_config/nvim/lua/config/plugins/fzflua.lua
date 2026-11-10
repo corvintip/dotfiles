@@ -29,7 +29,16 @@ return {
         desc = "[F]ind in [C]onfig root"
       },
     },
-    opts = {}
+    opts = {
+      keymap = {
+        builtin = {
+          ["<C-S-j>"] = "preview-down",
+          ["<C-S-k>"] = "preview-up",
+          ["<C-S-d>"] = "preview-page-down",
+          ["<C-S-u>"] = "preview-page-up",
+        }
+      }
+    }
     ---@diagnostic enable: missing-fields
   }
 }
